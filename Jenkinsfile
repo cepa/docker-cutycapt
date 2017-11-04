@@ -19,7 +19,7 @@ pipeline {
       steps {
         checkout([
           $class: 'GitSCM',
-          userRemoteConfigs: [[url: 'https://github.com/loskoderos/cutycapt-docker.git']],
+          userRemoteConfigs: [[url: 'https://github.com/loskoderos/docker-cutycapt.git']],
           branches: [[name: '*/master']],
         ])
       }
