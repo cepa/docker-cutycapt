@@ -390,7 +390,7 @@ CaptHelp(void) {
     "  --auto-load-images=<on|off>    Automatic image loading (default: on)        \n"
     "  --js-can-open-windows=<on|off> Script can open windows? (default: unknown)  \n"
     "  --orientation=<landscape|portrait> Page orientation (default: portrait)     \n"
-    "  --page-size=<A3|A4|Letter|Tabloid> Page size (default: A4)                  \n"
+    "  --paper-size=<A3|A4|Letter|Tabloid> Page size (default: A4)                  \n"
     "  --js-can-access-clipboard=<on|off> Script clipboard privs (default: unknown)\n"
     "  --cookie-jar=<path>            The path to the cookie jar to use when making\n"
     "                                 requests. Cookies will be read from this file\n"
