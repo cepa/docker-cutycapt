@@ -366,6 +366,7 @@ CaptHelp(void) {
     " -----------------------------------------------------------------------------\n"
     "  --help                         Print this help page and exit                \n"
     "  --url=<url>                    The URL to capture (http:...|file:...|...)   \n"
+    "  --b64-url=<url>                URL encoded with Base64, overrides the --url \n"
     "  --out=<path>                   The target file (.png|pdf|ps|svg|jpeg|...)   \n"
     "  --out-format=<f>               Like extension in --out, overrides heuristic \n"
 //  "  --out-quality=<int>            Output format quality from 1 to 100          \n"
@@ -465,6 +466,7 @@ main(int argc, char *argv[]) {
   CookieJar cookieJar;
   QPrinter::Orientation orientation = QPrinter::Portrait;
   QPrinter::PaperSize paperSize = QPrinter::A4;
+  QByteArray argB64Url;
 
   // Parse command line parameters
   for (int ax = 1; ax < argc; ++ax) {
@@ -516,6 +518,14 @@ main(int argc, char *argv[]) {
     // --name=value options
     if (strncmp("--url", s, nlen) == 0) {
       argUrl = value;
+
+    } else if (strncmp("--b64-url", s, nlen) == 0) {
+      argB64Url = QByteArray::fromBase64(value);
+      if (!argB64Url.isEmpty()) {
+        argB64Url = argB64Url.trimmed();
+        argUrl = argB64Url.data();
+        printf("url='%s'\n", argUrl);
+      }
 
     } else if (strncmp("--min-width", s, nlen) == 0) {
       // TODO: add error checking here?
